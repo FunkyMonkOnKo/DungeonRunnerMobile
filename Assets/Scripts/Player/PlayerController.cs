@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
   [SerializeField] private bool isMovingBetweenLanes;
   [SerializeField] private int lanePos;
+  [SerializeField] private GameController gameController;
 
 
   void Start()
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
       startCounterValue -= Time.deltaTime;
       return;
     }
+
+    gameController.UnpauseGame();
 
     playerAnim.SetTrigger("StartRunning");
 
