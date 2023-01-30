@@ -25,8 +25,8 @@ public class ObstacleSpawnerController : MonoBehaviour
         secondsToSpawn -= Time.deltaTime;
         return;
       }
-      GameObject obstacle = obstacles[Random.Range(0, obstacles.Length+1)];
-      GameObject lane = lanes[Random.Range(0, lanes.Length + 1)];
+      GameObject obstacle = obstacles[Random.Range(0, obstacles.Length)];
+      GameObject lane = lanes[Random.Range(0, lanes.Length)];
 
       secondsToSpawn = spawnTimer;
       Instantiate(obstacle, lane.transform.position, obstacle.transform.rotation);
