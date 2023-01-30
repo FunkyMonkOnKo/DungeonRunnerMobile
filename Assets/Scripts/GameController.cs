@@ -4,33 +4,46 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-  public static GameController instance;
+    public static GameController instance;
 
-  public bool isPaused { get; private set; }
+    [SerializeField] private float startCounterValue;
 
-  private void Awake()
-  {
-    if (instance == null)
+    public bool isPaused { get; private set; }
+
+    private void Awake()
     {
-      instance = this;
-      DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-    else
+
+    private void Start()
     {
-      Destroy(gameObject);
+        isPaused = true;
     }
-  }
 
-  private void Start()
-  {
-    isPaused = true;
-  }
+    private void Update()
+    {
+        if (startCounterValue > 0)
+        {
+            startCounterValue -= Time.deltaTime;
+            return;
+        }
+    }
 
-  public void PauseGame() {
-    isPaused = true;
-  }
+    public void PauseGame()
+    {
+        isPaused = true;
+    }
 
-  public void UnpauseGame() {
-    isPaused = false;
-  }
+    public void UnpauseGame()
+    {
+        isPaused = false;
+    }
 }
