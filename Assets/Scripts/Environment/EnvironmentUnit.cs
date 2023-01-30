@@ -5,9 +5,14 @@ using UnityEngine;
 public class EnvironmentUnit : MonoBehaviour
 {
   [SerializeField] private float environmentSpeed;
-  [SerializeField] private GameController gameController;
 
   private float zPosition;
+  public float UnitSize { get; private set; }
+
+  private void Awake()
+  {
+    SetUnitSize();
+  }
 
   void Start()
   {
@@ -16,9 +21,22 @@ public class EnvironmentUnit : MonoBehaviour
 
   void Update()
   {
-      if (!gameController.isPaused) { 
-        zPosition -= environmentSpeed * Time.deltaTime;
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);
+    if (!GameController.instance.isPaused) {
+      zPosition -= environmentSpeed * Time.deltaTime;
+      gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);
     }
   }
+
+  private void FixedUpdate()
+  {
+    if (gameObject.transform.position.z <= -UnitSize)
+    {
+      EnvironmentController.instance.GenerateUnit(gameObject.transform.position.z, UnitSize);
+      Destroy(gameObject);
+    }
+  }
+
+  private void SetUnitSize() { UnitSize = GetComponent<BoxCollider>().size.z; }
+
+  public float GetUnitSize() { return UnitSize; }
 }
