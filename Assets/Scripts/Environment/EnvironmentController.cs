@@ -8,6 +8,7 @@ public class EnvironmentController : MonoBehaviour
 
   [SerializeField] private GameObject environmentUnitPrefab;
   [SerializeField] private int unitsOnScene = 4;
+  public float environmentSpeed;
 
   private void Awake()
   {

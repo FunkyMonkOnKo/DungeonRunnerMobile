@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnvironmentUnit : MonoBehaviour
 {
-  [SerializeField] private float environmentSpeed;
-
   private float zPosition;
   public float UnitSize { get; private set; }
 
@@ -22,7 +20,7 @@ public class EnvironmentUnit : MonoBehaviour
   void Update()
   {
     if (!GameController.instance.isPaused) {
-      zPosition -= environmentSpeed * Time.deltaTime;
+      zPosition -= EnvironmentController.instance.environmentSpeed * Time.deltaTime;
       gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);
     }
   }
