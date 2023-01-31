@@ -7,8 +7,12 @@ public class GameController : MonoBehaviour
   public static GameController instance;
 
   [SerializeField] private float startCounterValue;
+  [SerializeField] private GameObject gameOverMenu;
+
 
   public bool isPaused { get; private set; }
+  private bool gameStarted = false;
+  public bool gameOver { get; private set; }
 
   private void Awake()
   {
@@ -26,6 +30,7 @@ public class GameController : MonoBehaviour
   private void Start()
   {
     isPaused = true;
+    gameOver = false;
   }
 
   private void Update()
@@ -36,7 +41,11 @@ public class GameController : MonoBehaviour
       return;
     }
 
-    UnpauseGame();
+    if (!gameStarted)
+    {
+      UnpauseGame();
+      gameStarted = true;
+    }
   }
 
   public void PauseGame()
@@ -47,5 +56,10 @@ public class GameController : MonoBehaviour
   public void UnpauseGame()
   {
     isPaused = false;
+  }
+
+  public void GameOver() {
+    gameOver = true;
+    gameOverMenu.SetActive(true);
   }
 }
