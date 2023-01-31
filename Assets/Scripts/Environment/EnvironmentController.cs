@@ -38,4 +38,10 @@ public class EnvironmentController : MonoBehaviour
   {
     Instantiate(environmentUnitPrefab, new Vector3(0, 0, relativePositionZ + (unitsOnScene * unitSize)), environmentUnitPrefab.transform.rotation);
   }
+
+    public void DestroyInstance()
+    {
+        Destroy(instance.gameObject);
+        instance = null;
+    }
 }

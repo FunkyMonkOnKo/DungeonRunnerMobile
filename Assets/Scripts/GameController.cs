@@ -62,4 +62,10 @@ public class GameController : MonoBehaviour
     gameOver = true;
     gameOverMenu.SetActive(true);
   }
+
+    public void DestroyInstance()
+    {
+        Destroy(instance.gameObject);
+        instance = null;
+    }
 }

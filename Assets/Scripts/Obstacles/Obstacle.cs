@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour
 
   void Update()
   {
-    if (!GameController.instance.isPaused)
+    if (GameController.instance != null && !GameController.instance.isPaused)
     {
       zPosition -= EnvironmentController.instance.environmentSpeed * Time.deltaTime;
       gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);

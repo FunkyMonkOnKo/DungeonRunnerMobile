@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-  public void RestartGame()
-  {
-    SceneManager.LoadScene(1);
-  }
+    public void RestartGame()
+    {
+        DestroyInstances();
+        SceneManager.LoadScene(1);
+    }
 
-  public void BackToMenu()
-  {
-    SceneManager.LoadScene(0);
-  }
+    public void BackToMenu()
+    {
+        DestroyInstances();
+      SceneManager.LoadScene(0);
+    }
+
+    private void DestroyInstances()
+    {
+        GameController.instance.DestroyInstance();
+        EnvironmentController.instance.DestroyInstance();
+    }
 }
