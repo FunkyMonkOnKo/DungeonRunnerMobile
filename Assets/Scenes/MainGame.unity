@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 1661487870}
   - component: {fileID: 1661487871}
   m_Layer: 0
-  m_Name: ObstacleSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1622,7 +1622,11 @@ MonoBehaviour:
   - {fileID: 7886729850279914647, guid: ad8f2656c27f4734ba7d38627102ded9, type: 3}
   - {fileID: 8104244210516414375, guid: 2f0f84b8193d384478aebbb627c8499d, type: 3}
   - {fileID: 7398806881849398347, guid: 018160a9dea2e6f4998121a59f2f21c2, type: 3}
-  spawnTimer: 3
+  coin: {fileID: 6956673494784619273, guid: 9cb477f7e0249de4e9993ddb7d68d45b, type: 3}
+  invincibilityPowerUp: {fileID: 8927693807036705193, guid: 04e917cf3e32fe547bebed310e8ef00d, type: 3}
+  spawnObstacleTimer: 5
+  spawnCoinsTimer: 6
+  spawnPowerUpTimer: 10
 --- !u!1001 &1723008932
 PrefabInstance:
   m_ObjectHideFlags: 0

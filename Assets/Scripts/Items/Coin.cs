@@ -1,16 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironmentUnit : MonoBehaviour
+public class Coin : MonoBehaviour
 {
   private float zPosition;
-  public float UnitSize { get; private set; }
-
-  private void Awake()
-  {
-    SetUnitSize();
-  }
+  [SerializeField] private ParticleSystem popOutEffect;
 
   void Start()
   {
@@ -26,16 +22,17 @@ public class EnvironmentUnit : MonoBehaviour
     }
   }
 
-  private void FixedUpdate()
+  private void OnBecameInvisible()
   {
-    if (gameObject.transform.position.z <= -UnitSize)
+    Destroy(gameObject);
+  }
+
+  public void Collect()
+  {
+    if (popOutEffect != null)
     {
-      EnvironmentController.instance.GenerateUnit(gameObject.transform.position.z, UnitSize);
+      Instantiate(popOutEffect, this.transform.position, this.transform.rotation);
       Destroy(gameObject);
     }
   }
-
-  private void SetUnitSize() { UnitSize = GetComponent<BoxCollider>().size.z; }
-
-  public float GetUnitSize() { return UnitSize; }
 }

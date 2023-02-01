@@ -1,0 +1,104 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnerController : MonoBehaviour
+{
+  [SerializeField] private GameObject[] lanes;
+  [SerializeField] private GameObject[] obstacles;
+
+  [SerializeField] private GameObject coin;
+  [SerializeField] private GameObject invincibilityPowerUp;
+
+  [SerializeField] private float spawnObstacleTimer;
+  [SerializeField] private float spawnCoinsTimer;
+  [SerializeField] private float spawnPowerUpTimer;
+
+  private float secondsToSpawnObstacle;
+  private float secondsToSpawnCoins;
+  private float secondsToSpawnPowerUp;
+
+  private int obstacleLaneIndex = 1;
+  private int coinsLaneIndex = 2;
+  private int powerUpLaneIndex = 3;
+
+  private List<int> unoccupiedLanesList = new List<int> {};
+
+  void Start()
+  {
+    secondsToSpawnObstacle = spawnObstacleTimer;
+    secondsToSpawnCoins = spawnCoinsTimer;
+    secondsToSpawnPowerUp = spawnPowerUpTimer;
+
+    unoccupiedLanesList.Add(obstacleLaneIndex);
+    unoccupiedLanesList.Add(coinsLaneIndex);
+    unoccupiedLanesList.Add(powerUpLaneIndex);
+  }
+
+  void Update()
+  {
+    if (GameController.instance != null && !GameController.instance.isPaused)
+    {
+      if (secondsToSpawnObstacle >= 0)
+      { secondsToSpawnObstacle -= Time.deltaTime; }
+      else
+      { SpawnObstacle(); }
+
+      if (secondsToSpawnCoins >= 0)
+      { secondsToSpawnCoins -= Time.deltaTime; }
+      else
+      { SpawnCoins(); }
+
+      if (secondsToSpawnPowerUp >= 0)
+      { secondsToSpawnPowerUp -= Time.deltaTime; }
+      else
+      { SpawnPowerUp(); }
+    }
+  }
+
+  private void SpawnObstacle()
+  {
+    if (!unoccupiedLanesList.Contains(obstacleLaneIndex)) { unoccupiedLanesList.Add(obstacleLaneIndex); }
+
+    GameObject obstacle = obstacles[Random.Range(0, obstacles.Length)];
+    obstacleLaneIndex = ChooseRandomUnoccupiedIndex();
+    unoccupiedLanesList.Remove(obstacleLaneIndex);
+    GameObject lane = lanes[obstacleLaneIndex];
+
+    secondsToSpawnObstacle = spawnObstacleTimer;
+    Instantiate(obstacle, lane.transform.position, obstacle.transform.rotation);
+  }
+
+  private void SpawnCoins()
+  {
+    if (!unoccupiedLanesList.Contains(coinsLaneIndex)) { unoccupiedLanesList.Add(coinsLaneIndex); }
+
+    coinsLaneIndex = ChooseRandomUnoccupiedIndex();
+    unoccupiedLanesList.Remove(coinsLaneIndex);
+    GameObject lane = lanes[coinsLaneIndex];
+
+    secondsToSpawnCoins = spawnCoinsTimer;
+
+    //TODO spawn random coins count between 1 - 5?
+    Instantiate(coin, lane.transform.position, coin.transform.rotation);
+  }
+
+  private void SpawnPowerUp()
+  {
+    if (!unoccupiedLanesList.Contains(powerUpLaneIndex)) { unoccupiedLanesList.Add(powerUpLaneIndex); }
+
+    powerUpLaneIndex = ChooseRandomUnoccupiedIndex();
+    unoccupiedLanesList.Remove(powerUpLaneIndex);
+    GameObject lane = lanes[powerUpLaneIndex];
+
+    secondsToSpawnPowerUp = spawnPowerUpTimer;
+    Instantiate(invincibilityPowerUp, lane.transform.position, invincibilityPowerUp.transform.rotation);
+  }
+
+  private int ChooseRandomUnoccupiedIndex()
+  {
+    System.Random random = new System.Random();
+    int index = random.Next(unoccupiedLanesList.Count);
+    return index;
+  }
+}
