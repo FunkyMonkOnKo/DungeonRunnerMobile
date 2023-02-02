@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
   private bool isRunning = false;
   private int horizontalInput = 0;
 
-  [SerializeField] private bool isMovingBetweenLanes;
-  [SerializeField] private int laneNum;
+  [SerializeField] private float invincibilityDuration;
+  [SerializeField] private Light playerAura;
+  private float invincibiltyRemains;
+  private bool isInvincible = false;
+
+  private bool isMovingBetweenLanes;
+  private int laneNum;
 
   void Start()
   {
@@ -27,12 +32,25 @@ public class PlayerController : MonoBehaviour
 
     laneNum = 1;
     isMovingBetweenLanes = false;
+
+    invincibiltyRemains = 0;
   }
 
   void Update()
   {
     if (GameController.instance != null && !GameController.instance.isPaused)
     {
+      if (isInvincible && invincibiltyRemains > 0)
+      {
+        invincibiltyRemains -= Time.deltaTime;
+      }
+      else if (isInvincible && invincibiltyRemains <= 0)
+      {
+        isInvincible = false;
+        playerAura.color = Color.white;
+        playerAura.intensity = 2;
+      }
+
       if (!isRunning)
       {
         playerAnim.SetTrigger("StartRunning");
@@ -97,13 +115,16 @@ public class PlayerController : MonoBehaviour
   {
     if (other.tag == "Obstacle")
     {
-      GameController.instance.PauseGame();
-      playerAnim.SetTrigger(collision);
 
       Obstacle obstacle = other.GetComponent<Obstacle>();
       obstacle.PopOut();
 
-      StartCoroutine(PlayerDefeat());
+      if (!isInvincible)
+      {
+        GameController.instance.PauseGame();
+        playerAnim.SetTrigger(collision);
+        StartCoroutine(PlayerDefeat());
+      }
     }
     else if (other.tag == "Coin")
     {
@@ -114,6 +135,10 @@ public class PlayerController : MonoBehaviour
     {
       InvincibilityPowerUp powerup = other.GetComponent<InvincibilityPowerUp>();
       powerup.Collect();
+      invincibiltyRemains = invincibilityDuration;
+      isInvincible = true;
+      playerAura.color = Color.red;
+      playerAura.intensity = 3;
     }
   }
 
