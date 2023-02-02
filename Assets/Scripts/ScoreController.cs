@@ -41,7 +41,7 @@ public class ScoreController : MonoBehaviour
     }
 
     scoreTextUI.text = $"Score: {Mathf.FloorToInt(score).ToString()}";
-    coinsTextUI.text = $"X {coins.ToString()}";
+    coinsTextUI.text = $"x {coins.ToString()}";
   }
 
   public void CoinPickup(int scoreValue) {
