@@ -6,6 +6,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
   private float zPosition;
+  private float xRotation;
+  [SerializeField] private int scoreValue;
   [SerializeField] private ParticleSystem popOutEffect;
 
   void Start()
@@ -19,6 +21,9 @@ public class Coin : MonoBehaviour
     {
       zPosition -= EnvironmentController.instance.environmentSpeed * Time.deltaTime;
       gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);
+      
+      xRotation -= EnvironmentController.instance.environmentSpeed * Time.deltaTime;
+      gameObject.transform.Rotate(xRotation, 0, 0);
     }
   }
 
@@ -31,8 +36,10 @@ public class Coin : MonoBehaviour
   {
     if (popOutEffect != null)
     {
-      Instantiate(popOutEffect, this.transform.position, this.transform.rotation);
-      Destroy(gameObject);
+      Instantiate(popOutEffect, this.transform.position, this.transform.rotation);     
     }
+
+    ScoreController.instance.CoinPickup(scoreValue);
+    Destroy(gameObject);
   }
 }

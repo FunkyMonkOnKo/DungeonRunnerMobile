@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnvironmentUnit : MonoBehaviour
 {
   private float zPosition;
-  public float UnitSize { get; private set; }
+  public float unitSize { get; private set; }
 
   private void Awake()
   {
@@ -28,14 +28,14 @@ public class EnvironmentUnit : MonoBehaviour
 
   private void FixedUpdate()
   {
-    if (gameObject.transform.position.z <= -UnitSize)
+    if (gameObject.transform.position.z <= -unitSize * 2)
     {
-      EnvironmentController.instance.GenerateUnit(gameObject.transform.position.z, UnitSize);
+      EnvironmentController.instance.GenerateUnit(gameObject.transform.position.z, unitSize);
       Destroy(gameObject);
     }
   }
 
-  private void SetUnitSize() { UnitSize = GetComponent<BoxCollider>().size.z; }
+  private void SetUnitSize() { unitSize = GetComponent<BoxCollider>().size.z; }
 
-  public float GetUnitSize() { return UnitSize; }
+  public float GetUnitSize() { return unitSize; }
 }

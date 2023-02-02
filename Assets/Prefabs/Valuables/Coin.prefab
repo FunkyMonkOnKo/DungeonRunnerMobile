@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4004ea73e913340419f4fd1305643e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 3
   popOutEffect: {fileID: 9098136126462491989, guid: b2247b8b89e81a74aa0cd529ee4b8566, type: 3}
 --- !u!54 &-364271226245918183
 Rigidbody:

@@ -14,6 +14,12 @@ public class SpawnerController : MonoBehaviour
   [SerializeField] private GameObject invincibilityPowerUp;
 
   [SerializeField] private float spawnObstacleTimer;
+  [SerializeField] private float minSpawnObstacleTimer;
+  [SerializeField] private float spawnObstacleTimerMultiplier;
+  [SerializeField] private float addDifficultyInterval;
+
+  private float secondsToAddDifficutlty;
+
   [SerializeField] private float spawnCoinsTimer;
   [SerializeField] private float spawnPowerUpTimer;
 
@@ -21,9 +27,9 @@ public class SpawnerController : MonoBehaviour
   private float secondsToSpawnCoins;
   private float secondsToSpawnPowerUp;
 
-  private int obstacleLaneIndex = 1;
-  private int coinsLaneIndex = 2;
-  private int powerUpLaneIndex = 3;
+  private int obstacleLaneIndex = 0;
+  private int coinsLaneIndex = 1;
+  private int powerUpLaneIndex = 2;
 
   private List<int> unoccupiedLanesList = new List<int> {};
 
@@ -42,6 +48,8 @@ public class SpawnerController : MonoBehaviour
 
   void Start()
   {
+    secondsToAddDifficutlty = addDifficultyInterval;
+
     secondsToSpawnObstacle = spawnObstacleTimer;
     secondsToSpawnCoins = spawnCoinsTimer;
     secondsToSpawnPowerUp = spawnPowerUpTimer;
@@ -55,6 +63,11 @@ public class SpawnerController : MonoBehaviour
   {
     if (GameController.instance != null && !GameController.instance.isPaused)
     {
+      if (secondsToAddDifficutlty >= 0)
+      { secondsToAddDifficutlty -= Time.deltaTime; }
+      else if (spawnObstacleTimer > minSpawnObstacleTimer)
+      { AddDifficulty(); }
+
       if (secondsToSpawnObstacle >= 0)
       { secondsToSpawnObstacle -= Time.deltaTime; }
       else
@@ -70,6 +83,12 @@ public class SpawnerController : MonoBehaviour
       else
       { SpawnPowerUp(); }
     }
+  }
+
+  private void AddDifficulty()
+  {
+    spawnObstacleTimer /= spawnObstacleTimerMultiplier;
+    secondsToAddDifficutlty = addDifficultyInterval;
   }
 
   private void SpawnObstacle()
@@ -95,8 +114,13 @@ public class SpawnerController : MonoBehaviour
 
     secondsToSpawnCoins = spawnCoinsTimer;
 
-    //TODO spawn random coins count between 1 - 5?
-    Instantiate(coin, lane.transform.position, coin.transform.rotation);
+    int coinCount = Random.Range(1, 5);
+    Vector3 coinPosition = lane.transform.position;
+    while (coinCount > 0) {
+      coinPosition.z += coinCount;
+      Instantiate(coin, coinPosition, coin.transform.rotation);
+      coinCount--;
+    }
   }
 
   private void SpawnPowerUp()

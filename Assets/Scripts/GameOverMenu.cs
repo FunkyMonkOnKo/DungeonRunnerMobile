@@ -22,5 +22,6 @@ public class GameOverMenu : MonoBehaviour
     GameController.instance.DestroyInstance();
     EnvironmentController.instance.DestroyInstance();
     SpawnerController.instance.DestroyInstance();
+    ScoreController.instance.DestroyInstance();
   }
 }
