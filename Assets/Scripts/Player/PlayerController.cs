@@ -13,24 +13,19 @@ public class PlayerController : MonoBehaviour
   const string turnRight = "TurnRight";
   const string collision = "Collision";
 
-  private Vector3[] lanes = new Vector3[3];
-  private Vector3 leftLane = new Vector3(2, 0, 0);
-  private Vector3 midLane = new Vector3(0, 0, 0);
-  private Vector3 rightLane = new Vector3(-2, 0, 0);
+  private GameObject[] lanes;
 
   private bool isRunning = false;
   private int horizontalInput = 0;
 
   [SerializeField] private bool isMovingBetweenLanes;
-  [SerializeField] private int lanePos;
+  [SerializeField] private int laneNum;
 
   void Start()
   {
-    lanes[0] = leftLane;
-    lanes[1] = midLane;
-    lanes[2] = rightLane;
+    lanes = SpawnerController.instance.lanes;
 
-    lanePos = 1;
+    laneNum = 1;
     isMovingBetweenLanes = false;
   }
 
@@ -46,17 +41,17 @@ public class PlayerController : MonoBehaviour
 
       if (isMovingBetweenLanes)
       {
-        MovePlayer(lanePos);
+        MovePlayer(laneNum);
         return;
       }
 
-      if ((horizontalInput == -1 || Input.GetAxisRaw("Horizontal") == -1f) && lanePos < lanes.Length - 1)
+      if ((horizontalInput == -1 || Input.GetAxisRaw("Horizontal") == -1f) && laneNum < lanes.Length - 1)
       {
         playerAnim.SetTrigger(turnLeft);
         StartCoroutine(MovePlayerBetweenLanes(turnLeft));
         horizontalInput = 0;
       }
-      else if ((horizontalInput == 1 || Input.GetAxisRaw("Horizontal") == 1f) && lanePos > 0)
+      else if ((horizontalInput == 1 || Input.GetAxisRaw("Horizontal") == 1f) && laneNum > 0)
       {
         playerAnim.SetTrigger(turnRight);
         StartCoroutine(MovePlayerBetweenLanes(turnRight));
@@ -77,7 +72,8 @@ public class PlayerController : MonoBehaviour
 
   private void MovePlayer(int lanePos)
   {
-    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, lanes[lanePos], speed * Time.deltaTime);
+    Vector3 lanePosition = new Vector3(lanes[lanePos].transform.position.x, 0, 0);
+    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, lanePosition, speed * Time.deltaTime);
   }
 
   private void SelectNewLanePosition(string direction)
@@ -85,14 +81,14 @@ public class PlayerController : MonoBehaviour
     switch (direction)
     {
       case turnLeft:
-        lanePos++;
-        if (lanePos > lanes.Length - 1)
-          lanePos = lanes.Length - 1;
+        laneNum++;
+        if (laneNum > lanes.Length - 1)
+          laneNum = lanes.Length - 1;
         break;
       case turnRight:
-        lanePos--;
-        if (lanePos < 0)
-          lanePos = 0;
+        laneNum--;
+        if (laneNum < 0)
+          laneNum = 0;
         break;
     }
   }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-  [SerializeField] private GameObject[] lanes;
+  public static SpawnerController instance;
+
+  public GameObject[] lanes;
+  
   [SerializeField] private GameObject[] obstacles;
 
   [SerializeField] private GameObject coin;
@@ -23,6 +26,19 @@ public class SpawnerController : MonoBehaviour
   private int powerUpLaneIndex = 3;
 
   private List<int> unoccupiedLanesList = new List<int> {};
+
+  private void Awake()
+  {
+    if (instance == null)
+    {
+      instance = this;
+      DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+      Destroy(gameObject);
+    }
+  }
 
   void Start()
   {
@@ -100,5 +116,11 @@ public class SpawnerController : MonoBehaviour
     System.Random random = new System.Random();
     int index = random.Next(unoccupiedLanesList.Count);
     return index;
+  }
+
+  public void DestroyInstance()
+  {
+    Destroy(instance.gameObject);
+    instance = null;
   }
 }

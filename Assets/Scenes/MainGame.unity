@@ -667,7 +667,7 @@ MonoBehaviour:
   playerAnim: {fileID: 1723008934}
   speed: 3
   isMovingBetweenLanes: 0
-  lanePos: 0
+  laneNum: 0
 --- !u!136 &549544035
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1615,9 +1615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanes:
-  - {fileID: 1640560536}
-  - {fileID: 275945458}
   - {fileID: 1273847961}
+  - {fileID: 275945458}
+  - {fileID: 1640560536}
   obstacles:
   - {fileID: 7886729850279914647, guid: ad8f2656c27f4734ba7d38627102ded9, type: 3}
   - {fileID: 8104244210516414375, guid: 2f0f84b8193d384478aebbb627c8499d, type: 3}

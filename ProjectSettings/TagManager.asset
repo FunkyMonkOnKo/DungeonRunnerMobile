@@ -7,6 +7,8 @@ TagManager:
   - Environment
   - Edge
   - Obstacle
+  - Coin
+  - PowerUp
   layers:
   - Default
   - TransparentFX
