@@ -46,9 +46,7 @@ public class PlayerController : MonoBehaviour
       }
       else if (isInvincible && invincibiltyRemains <= 0)
       {
-        isInvincible = false;
-        playerAura.color = Color.white;
-        playerAura.intensity = 2;
+        DisableInvincibilty();
       }
 
       if (!isRunning)
@@ -135,10 +133,7 @@ public class PlayerController : MonoBehaviour
     {
       InvincibilityPowerUp powerup = other.GetComponent<InvincibilityPowerUp>();
       powerup.Collect();
-      invincibiltyRemains = invincibilityDuration;
-      isInvincible = true;
-      playerAura.color = Color.red;
-      playerAura.intensity = 3;
+      EnableInvincibilty();
     }
   }
 
@@ -151,5 +146,20 @@ public class PlayerController : MonoBehaviour
   public void MoveHorizontalPlayer(int value)
   {
     horizontalInput = value;
+  }
+
+  private void DisableInvincibilty()
+  {
+    isInvincible = false;
+    playerAura.color = Color.white;
+    playerAura.intensity = 1.5f;
+  }
+
+  private void EnableInvincibilty()
+  {
+    invincibiltyRemains = invincibilityDuration;
+    isInvincible = true;
+    playerAura.color = Color.red;
+    playerAura.intensity = 3;
   }
 }
