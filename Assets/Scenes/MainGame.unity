@@ -669,8 +669,6 @@ MonoBehaviour:
   speed: 3
   invincibilityDuration: 3
   playerAura: {fileID: 1403704740}
-  isMovingBetweenLanes: 0
-  laneNum: 0
 --- !u!136 &549544035
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1399,7 +1397,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
