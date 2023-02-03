@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     SelectNewLanePosition(direction);
     isMovingBetweenLanes = true;
 
-    yield return new WaitForSeconds(1f);
+    yield return new WaitForSeconds(0.7f);
 
     isMovingBetweenLanes = false;
   }
