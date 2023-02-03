@@ -6,8 +6,11 @@ public class InvincibilityPowerUp : MonoBehaviour
 {
   private float zPosition;
   private float xRotation;
+
   [SerializeField] private int scoreValue;
   [SerializeField] private ParticleSystem popOutEffect;
+
+  [SerializeField] public float invincibilityDuration;
 
   void Start()
   {
@@ -22,7 +25,7 @@ public class InvincibilityPowerUp : MonoBehaviour
       gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, zPosition);
 
       xRotation -= EnvironmentController.instance.environmentSpeed * Time.deltaTime;
-      gameObject.transform.Rotate(xRotation, 0, 0);
+      gameObject.transform.Rotate(0, xRotation, 0);
     }
   }
 

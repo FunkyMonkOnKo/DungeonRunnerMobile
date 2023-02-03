@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
   private bool isRunning = false;
   private int horizontalInput = 0;
 
-  [SerializeField] private float invincibilityDuration;
   [SerializeField] private Light playerAura;
+
   private float invincibiltyRemains;
   private bool isInvincible = false;
 
@@ -133,7 +133,8 @@ public class PlayerController : MonoBehaviour
     {
       InvincibilityPowerUp powerup = other.GetComponent<InvincibilityPowerUp>();
       powerup.Collect();
-      EnableInvincibilty();
+
+      EnableInvincibilty(powerup.invincibilityDuration);
     }
   }
 
@@ -155,9 +156,9 @@ public class PlayerController : MonoBehaviour
     playerAura.intensity = 1.5f;
   }
 
-  private void EnableInvincibilty()
+  private void EnableInvincibilty(float duration)
   {
-    invincibiltyRemains = invincibilityDuration;
+    invincibiltyRemains = duration;
     isInvincible = true;
     playerAura.color = Color.red;
     playerAura.intensity = 3;
