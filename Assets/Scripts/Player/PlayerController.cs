@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
   private int horizontalInput = 0;
 
   [SerializeField] private Light playerAura;
+  [SerializeField] private float flashLenght;
+  private float flashCounter;
 
   private float invincibiltyRemains;
   private bool isInvincible = false;
@@ -43,6 +45,12 @@ public class PlayerController : MonoBehaviour
       if (isInvincible && invincibiltyRemains > 0)
       {
         invincibiltyRemains -= Time.deltaTime;
+        flashCounter -= Time.deltaTime;
+
+        if (invincibiltyRemains < 3 && flashCounter >= 0) {
+          playerAura.enabled = !playerAura.enabled;
+          flashCounter = flashLenght;
+        }
       }
       else if (isInvincible && invincibiltyRemains <= 0)
       {

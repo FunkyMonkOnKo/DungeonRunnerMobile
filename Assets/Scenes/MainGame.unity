@@ -667,8 +667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 1723008934}
   speed: 3
-  invincibilityDuration: 3
   playerAura: {fileID: 1403704740}
+  flashLenght: 0.3
 --- !u!136 &549544035
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 131680, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
       propertyPath: m_Name
-      value: Character_Hero_Knight_Female
+      value: Avatar
+      objectReference: {fileID: 0}
+    - target: {fileID: 184754, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 186176, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 422474, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
       propertyPath: m_RootOrder
