@@ -7,21 +7,13 @@ public class GameOverMenu : MonoBehaviour
 {
   public void RestartGame()
   {
-    DestroyInstances();
+    GameController.instance.DestroyInstances();
     SceneManager.LoadScene(1);
   }
 
   public void BackToMenu()
   {
-    DestroyInstances();
+    GameController.instance.DestroyInstances();
     SceneManager.LoadScene(0);
-  }
-
-  private void DestroyInstances()
-  {
-    GameController.instance.DestroyInstance();
-    EnvironmentController.instance.DestroyInstance();
-    SpawnerController.instance.DestroyInstance();
-    ScoreController.instance.DestroyInstance();
   }
 }

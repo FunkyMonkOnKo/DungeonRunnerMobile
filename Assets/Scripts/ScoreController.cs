@@ -9,10 +9,12 @@ public class ScoreController : MonoBehaviour
   public float score { get; private set; }
   public int coins { get; private set; }
 
-  [SerializeField] private float scoreMultiplier;
+  public const string highScoreHash = "HighScore";
+  public const string coinsCountHash = "CoinsCount";
+  private float highScore;
+  private int coinsCount;
 
-  [SerializeField] private TMP_Text scoreTextUI;
-  [SerializeField] private TMP_Text coinsTextUI;
+  [SerializeField] private float scoreMultiplier;
 
   private void Awake()
   {
@@ -31,26 +33,41 @@ public class ScoreController : MonoBehaviour
   {
     score = 0;
     coins = 0;
-  }
 
-  void Update()
-  {
-    if (GameController.instance != null && !GameController.instance.isPaused)
+    if (!PlayerPrefs.HasKey(highScoreHash))
     {
-      score += scoreMultiplier * Time.deltaTime;
+      PlayerPrefs.SetFloat(highScoreHash, 0);
     }
 
-    scoreTextUI.text = $"Score: {Mathf.FloorToInt(score).ToString()}";
-    coinsTextUI.text = $"x {coins.ToString()}";
+    if (!PlayerPrefs.HasKey(coinsCountHash))
+    {
+      PlayerPrefs.SetInt(coinsCountHash, 0);
+    }
+  }
+
+  public void UpdateScore(float scoreToAdd)
+  {
+    score += scoreToAdd * scoreMultiplier;
   }
 
   public void CoinPickup(int scoreValue) {
-    score += scoreValue;
+    score += scoreValue * scoreMultiplier;
     coins += 1;
   }
 
   public void PowerUpPickup(int scoreValue) {
-    score += scoreValue;
+    score += scoreValue * scoreMultiplier;
+  }
+
+  public void SaveHighScore() {
+    if (PlayerPrefs.GetFloat(highScoreHash) < score)
+    {
+      PlayerPrefs.SetFloat(highScoreHash, score);
+    }   
+  }
+
+  public void AddCoinsToPlayer() {
+    PlayerPrefs.SetInt(coinsCountHash, PlayerPrefs.GetInt(coinsCountHash) + coins);
   }
 
   public void DestroyInstance()

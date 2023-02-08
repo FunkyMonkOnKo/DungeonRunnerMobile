@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
   private bool isMovingBetweenLanes;
   private int laneNum;
 
+  [SerializeField] private PlayerModelPicker avatar;
+
+
   void Start()
   {
     lanes = SpawnerController.instance.lanes;
@@ -36,7 +39,10 @@ public class PlayerController : MonoBehaviour
     isMovingBetweenLanes = false;
 
     invincibiltyRemains = 0;
+
+    avatar.SetPlayerModel();
   }
+
 
   void Update()
   {

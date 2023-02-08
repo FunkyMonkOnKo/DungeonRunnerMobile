@@ -61,11 +61,17 @@ public class GameController : MonoBehaviour
   public void GameOver() {
     gameOver = true;
     gameOverMenu.SetActive(true);
+    ScoreController.instance.SaveHighScore();
+    ScoreController.instance.AddCoinsToPlayer();
   }
 
-    public void DestroyInstance()
-    {
-        Destroy(instance.gameObject);
-        instance = null;
-    }
+  public void DestroyInstances()
+  {
+    EnvironmentController.instance.DestroyInstance();
+    SpawnerController.instance.DestroyInstance();
+    ScoreController.instance.DestroyInstance();
+
+    Destroy(instance.gameObject);
+    instance = null;
+  }
 }
