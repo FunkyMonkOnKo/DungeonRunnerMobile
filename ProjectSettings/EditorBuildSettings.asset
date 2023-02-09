@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerModelPickerMenu.unity
     guid: 557c703b3f5e35945a76701bad684ce2
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 5eb7509585449df43b8a5f63f535f089
   m_configObjects: {}
