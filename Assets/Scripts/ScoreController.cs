@@ -11,8 +11,6 @@ public class ScoreController : MonoBehaviour
 
   public const string highScoreHash = "HighScore";
   public const string coinsCountHash = "CoinsCount";
-  private float highScore;
-  private int coinsCount;
 
   [SerializeField] private float scoreMultiplier;
 
@@ -67,7 +65,13 @@ public class ScoreController : MonoBehaviour
   }
 
   public void AddCoinsToPlayer() {
-    PlayerPrefs.SetInt(coinsCountHash, PlayerPrefs.GetInt(coinsCountHash) + coins);
+    int actualCoins = PlayerPrefs.GetInt(coinsCountHash);
+    PlayerPrefs.SetInt(coinsCountHash, actualCoins + coins);
+  }
+
+  public void NullScore() {
+    score = 0;
+    coins = 0;
   }
 
   public void DestroyInstance()

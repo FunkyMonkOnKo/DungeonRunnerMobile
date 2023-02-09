@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 10
   popOutEffect: {fileID: 9098136126462491989, guid: 4e134598f26728940916400ec50e57c1, type: 3}
-  invincibilityDuration: 10
+  invincibilityDuration: 6
 --- !u!65 &5164908120268855851
 BoxCollider:
   m_ObjectHideFlags: 0

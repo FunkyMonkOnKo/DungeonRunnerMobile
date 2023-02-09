@@ -10,7 +10,8 @@ public class ScoreHudController : MonoBehaviour
 
   void Start()
   {
-
+    scoreTextUI.text = $"Score: 0";
+    coinsTextUI.text = $"x 0";
   }
 
   void Update()

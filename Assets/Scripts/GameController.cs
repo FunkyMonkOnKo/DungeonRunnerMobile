@@ -6,7 +6,10 @@ public class GameController : MonoBehaviour
 {
   public static GameController instance;
 
+
   [SerializeField] private float startCounterValue;
+  private float startCounter;
+
   [SerializeField] private GameObject gameOverMenu;
 
 
@@ -31,13 +34,15 @@ public class GameController : MonoBehaviour
   {
     isPaused = true;
     gameOver = false;
+
+    startCounter = startCounterValue;
   }
 
   private void Update()
   {
-    if (startCounterValue > 0)
+    if (startCounter > 0)
     {
-      startCounterValue -= Time.deltaTime;
+      startCounter -= Time.deltaTime;
       return;
     }
 
@@ -70,6 +75,17 @@ public class GameController : MonoBehaviour
     EnvironmentController.instance.DestroyInstance();
     SpawnerController.instance.DestroyInstance();
     ScoreController.instance.DestroyInstance();
+
+    Destroy(instance.gameObject);
+    instance = null;
+  }
+
+  public void RestartGame()
+  {
+    EnvironmentController.instance.DestroyInstance();
+    SpawnerController.instance.DestroyInstance();
+
+    ScoreController.instance.NullScore();
 
     Destroy(instance.gameObject);
     instance = null;

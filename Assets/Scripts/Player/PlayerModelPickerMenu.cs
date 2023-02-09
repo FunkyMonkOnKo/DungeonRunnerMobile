@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverMenu : MonoBehaviour
+public class PlayerModelPickerMenu : MonoBehaviour
 {
-  public void RestartGame()
+  public void SelectPlayerModel(string modelName)
   {
-    GameController.instance.RestartGame();
-    SceneManager.LoadScene(1);
+    PlayerPrefs.SetString(PlayerModelPicker.playerModelNameHash, modelName);
   }
 
   public void BackToMenu()
   {
-    GameController.instance.DestroyInstances();
     SceneManager.LoadScene(0);
   }
 }

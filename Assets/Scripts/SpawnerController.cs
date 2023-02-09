@@ -89,6 +89,8 @@ public class SpawnerController : MonoBehaviour
   {
     spawnObstacleTimer /= spawnObstacleTimerMultiplier;
     secondsToAddDifficutlty = addDifficultyInterval;
+
+    EnvironmentController.instance.environmentSpeed += 2;
   }
 
   private void SpawnObstacle()
