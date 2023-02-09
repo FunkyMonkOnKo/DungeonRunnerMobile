@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
 
   void Start()
   {
-    lanes = SpawnerController.instance.lanes;
+    if (SpawnerController.instance != null)
+    {
+      lanes = SpawnerController.instance.lanes;
+    }
 
     laneNum = 1;
     isMovingBetweenLanes = false;
@@ -53,7 +56,8 @@ public class PlayerController : MonoBehaviour
         invincibiltyRemains -= Time.deltaTime;
         flashCounter -= Time.deltaTime;
 
-        if (invincibiltyRemains < 3 && flashCounter >= 0) {
+        if (invincibiltyRemains < 3 && flashCounter >= 0)
+        {
           playerAura.enabled = !playerAura.enabled;
           flashCounter = flashLenght;
         }
