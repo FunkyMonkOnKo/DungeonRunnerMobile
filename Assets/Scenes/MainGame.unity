@@ -1729,7 +1729,7 @@ MonoBehaviour:
   coin: {fileID: 6956673494784619273, guid: 9cb477f7e0249de4e9993ddb7d68d45b, type: 3}
   invincibilityPowerUp: {fileID: 8927693807036705193, guid: 04e917cf3e32fe547bebed310e8ef00d, type: 3}
   spawnObstacleTimer: 3
-  minSpawnObstacleTimer: 0.4
+  minSpawnObstacleTimer: 0.3
   spawnObstacleTimerMultiplier: 1.2
   addDifficultyInterval: 10
   spawnCoinsTimer: 6

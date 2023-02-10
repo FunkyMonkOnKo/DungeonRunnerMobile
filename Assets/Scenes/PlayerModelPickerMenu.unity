@@ -673,7 +673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400234169828570032}
+      - m_Target: {fileID: 1400234170524642529}
         m_TargetAssemblyTypeName: PlayerModelPickerButton, Assembly-CSharp
         m_MethodName: UnlockCharacter
         m_Mode: 1
@@ -1296,8 +1296,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4290624965
+  m_fontColor: {r: 0.7735849, g: 0.74196035, b: 0.74196035, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2100,7 +2100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400234169828570032}
+      - m_Target: {fileID: 1400234170157581045}
         m_TargetAssemblyTypeName: PlayerModelPickerButton, Assembly-CSharp
         m_MethodName: UnlockCharacter
         m_Mode: 1
@@ -2303,7 +2303,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400234169828570032}
+      - m_Target: {fileID: 1400234170528522494}
         m_TargetAssemblyTypeName: PlayerModelPickerButton, Assembly-CSharp
         m_MethodName: UnlockCharacter
         m_Mode: 1
@@ -2577,7 +2577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelName: Character_Hero_Knight_Male
-  modelPrice: 100
+  modelPrice: 20
   isUnlocked: 0
   unlockButton: {fileID: 1150854884}
 --- !u!1 &1400234169828570043
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelName: Character_Skeleton_Knight
-  modelPrice: 1
+  modelPrice: 100
   isUnlocked: 0
   unlockButton: {fileID: 1957869672}
 --- !u!222 &1400234170524642528
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelName: Character_Ghost_02
-  modelPrice: 0
+  modelPrice: 150
   isUnlocked: 0
   unlockButton: {fileID: 629636178}
 --- !u!1 &1400234170524642540
@@ -3173,8 +3173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelName: Character_Hero_Knight_Female
-  modelPrice: 20
-  isUnlocked: 0
+  modelPrice: 0
+  isUnlocked: 1
   unlockButton: {fileID: 2015389241}
 --- !u!1 &1400234170805992586
 GameObject:
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3402,7 +3402,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3590,7 +3590,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3725,7 +3725,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

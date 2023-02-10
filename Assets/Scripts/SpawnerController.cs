@@ -23,6 +23,8 @@ public class SpawnerController : MonoBehaviour
   [SerializeField] private float spawnCoinsTimer;
   [SerializeField] private float spawnPowerUpTimer;
 
+  [SerializeField] private float environmentSpeedTimerMultiplier = 1;
+
   private float secondsToSpawnObstacle;
   private float secondsToSpawnCoins;
   private float secondsToSpawnPowerUp;
@@ -91,7 +93,7 @@ public class SpawnerController : MonoBehaviour
     spawnCoinsTimer /= spawnObstacleTimerMultiplier;
     secondsToAddDifficutlty = addDifficultyInterval;
 
-    EnvironmentController.instance.environmentSpeed += 2;
+    EnvironmentController.instance.environmentSpeed += environmentSpeedTimerMultiplier;
   }
 
   private void SpawnObstacle()

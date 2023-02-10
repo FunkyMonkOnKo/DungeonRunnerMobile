@@ -36,5 +36,6 @@ public class MainMenu : MonoBehaviour
   public void DeletePlayerPrefs()
   {
     PlayerPrefs.DeleteAll();
+    PlayerPrefs.SetInt(ScoreController.coinsCountHash,150);
   }
 }
