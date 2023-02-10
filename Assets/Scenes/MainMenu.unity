@@ -188,8 +188,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dungeon runner
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4d381aee2e3cc8e438456988e1afb35d, type: 2}
-  m_sharedMaterial: {fileID: 6841337816755448288, guid: 4d381aee2e3cc8e438456988e1afb35d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 28989dc340a93ca4498a58d1d31afe59, type: 2}
+  m_sharedMaterial: {fileID: -5733972027013298698, guid: 28989dc340a93ca4498a58d1d31afe59, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -514,6 +514,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreTextUI: {fileID: 909574827}
   coinsCountTextUI: {fileID: 1456035313}
+--- !u!1 &757552703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 757552704}
+  - component: {fileID: 757552705}
+  m_Layer: 0
+  m_Name: AdsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &757552704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757552703}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 4.95, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757552705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757552703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfdac320cd977b647b6fd5c54350a10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 5157842
+  _iOSGameId: 5157843
+  _testMode: 1
 --- !u!1 &813127837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,83 +1359,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113417523}
   m_CullTransparentMesh: 1
---- !u!1001 &1115236397
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3109124543349170880, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_Name
-      value: AdsInitializer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 345
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1688
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109124543349170881, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
---- !u!1 &1115236398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3109124543349170880, guid: ce2289e768558f343b786f72d4f7e39b, type: 3}
-  m_PrefabInstance: {fileID: 1115236397}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1115236399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115236398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418b8756318524b45802106a3b1080d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidGameId: 5157842
-  _iOSGameId: 5157843
-  _testMode: 1
 --- !u!1 &1151546396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1714,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428996981}
     m_Modifications:
+    - target: {fileID: 6388448070666733718, guid: 941a83cb67946bd49a515c6f3b708447, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6388448070924074324, guid: 941a83cb67946bd49a515c6f3b708447, type: 3}
       propertyPath: m_Name
       value: Player

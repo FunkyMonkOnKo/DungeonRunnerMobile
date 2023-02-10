@@ -2,14 +2,18 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
-public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
+public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
   [SerializeField] string _androidGameId;
   [SerializeField] string _iOSGameId;
   [SerializeField] bool _testMode = true;
   private string _gameId;
 
-  public static AdsInitializer instance;
+  [SerializeField] string _androidAdUnitId = "Interstitial_Android";
+  [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
+  string _adUnitId;
+
+  public static AdsManager instance;
 
   private void Awake()
   {
@@ -23,7 +27,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
     else
     {
       Destroy(gameObject);
-    }  
+    }
   }
 
   public void InitializeAds()
@@ -32,6 +36,11 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
         ? _iOSGameId
         : _androidGameId;
     Advertisement.Initialize(_gameId, _testMode, this);
+
+    // Get the Ad Unit ID for the current platform:
+    _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
+        ? _iOsAdUnitId
+        : _androidAdUnitId;
   }
 
   public void OnInitializationComplete()
@@ -48,16 +57,16 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
   public void LoadAd()
   {
     // IMPORTANT! Only load content AFTER initialization 
-    Debug.Log("Loading Ad: " + _gameId);
-    Advertisement.Load(_gameId, this);
+    Debug.Log("Loading Ad: " + _adUnitId);
+    Advertisement.Load(_adUnitId, this);
   }
 
   // Show the loaded content in the Ad Unit:
   public void ShowAd()
   {
     // Note that if the ad content wasn't previously loaded, this method will fail
-    Debug.Log("Showing Ad: " + _gameId);
-    Advertisement.Show(_gameId, this);
+    Debug.Log("Showing Ad: " + _adUnitId);
+    Advertisement.Show(_adUnitId, this);
   }
 
   // Implement Load Listener and Show Listener interface methods: 
@@ -86,7 +95,8 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener, IU
 
   public void OnUnityAdsShowStart(string adUnitId) { }
   public void OnUnityAdsShowClick(string adUnitId) { }
-  public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) {
+  public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
+  {
     GameController.instance.RestartGame();
     SceneManager.LoadScene(1);
   }
