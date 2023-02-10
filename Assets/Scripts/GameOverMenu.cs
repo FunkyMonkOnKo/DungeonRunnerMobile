@@ -7,8 +7,8 @@ public class GameOverMenu : MonoBehaviour
 {
   public void RestartGame()
   {
-    GameController.instance.RestartGame();
-    SceneManager.LoadScene(1);
+    AdsInitializer.instance.LoadAd();
+    AdsInitializer.instance.ShowAd();
   }
 
   public void BackToMenu()
