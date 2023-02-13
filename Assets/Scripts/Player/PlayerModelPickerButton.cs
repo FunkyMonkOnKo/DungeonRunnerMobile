@@ -29,6 +29,8 @@ public class PlayerModelPickerButton : MonoBehaviour
 
     isUnlocked = true;
 
+    AudioManager.instance.PlaySFX(4);
+
     UpdateUnlocks();
   }
 

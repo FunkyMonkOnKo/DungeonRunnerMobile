@@ -12,6 +12,7 @@ public class PlayerModelPickerMenu : MonoBehaviour
 
   public void BackToMenu()
   {
+    AudioManager.instance.PlaySFX(4);
     SceneManager.LoadScene(0);
   }
 }

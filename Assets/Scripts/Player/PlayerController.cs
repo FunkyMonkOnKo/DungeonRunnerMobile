@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
       {
         playerAnim.SetTrigger("StartRunning");
         isRunning = true;
+
+        AudioManager.instance.PlayFootStepsLoop();
+        AudioManager.instance.PlaySFX(2);
       }
 
       if (isMovingBetweenLanes)
@@ -139,17 +142,22 @@ public class PlayerController : MonoBehaviour
       {
         GameController.instance.PauseGame();
         playerAnim.SetTrigger(collision);
+        AudioManager.instance.StopFootStepsLoop();
+        AudioManager.instance.PlaySFX(1);
+
         StartCoroutine(PlayerDefeat());
       }
     }
     else if (other.tag == "Coin")
     {
       Coin coin = other.GetComponent<Coin>();
+      AudioManager.instance.PlaySFXAdjusted(0);
       coin.Collect();
     }
     else if (other.tag == "PowerUp")
     {
       InvincibilityPowerUp powerup = other.GetComponent<InvincibilityPowerUp>();
+      AudioManager.instance.PlaySFX(3);
       powerup.Collect();
 
       EnableInvincibilty(powerup.invincibilityDuration);

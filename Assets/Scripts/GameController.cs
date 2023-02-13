@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
     gameOver = false;
 
     startCounter = startCounterValue;
+
+    AudioManager.instance.PlayLevelMusic();
   }
 
   private void Update()

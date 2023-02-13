@@ -27,6 +27,7 @@ public class PlayerModelPicker : MonoBehaviour
         else
         {
           playerModel.SetActive(true);
+          AudioManager.instance.PlaySFX(4);
         }
       }
     }

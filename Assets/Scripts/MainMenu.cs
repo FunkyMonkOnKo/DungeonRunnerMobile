@@ -16,20 +16,25 @@ public class MainMenu : MonoBehaviour
 
     highScoreTextUI.text = $"High Score: {Mathf.FloorToInt(highScore).ToString()}";
     coinsCountTextUI.text = $"Coins: {coinsCount.ToString()}";
+
+    AudioManager.instance.PlayMainMenuMusic();
   }
 
   public void StartGame()
   {
+    AudioManager.instance.PlaySFX(4);
     SceneManager.LoadScene(1);
   }
 
   public void PlayerPickerMenu()
   {
+    AudioManager.instance.PlaySFX(4);
     SceneManager.LoadScene(2);
   }
 
   public void Credits()
   {
+    AudioManager.instance.PlaySFX(4);
     SceneManager.LoadScene(3);
   }
 

@@ -39,6 +39,15 @@ public class AudioManager : MonoBehaviour
     }
   }
 
+  public void PlayFootStepsLoop() {
+    sfx[5].Play();
+  }
+
+  public void StopFootStepsLoop()
+  {
+    sfx[5].Stop();
+  }
+
   public void PlaySFX(int sfxToPlay)
   {
     sfx[sfxToPlay].Stop();
